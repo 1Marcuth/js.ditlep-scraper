@@ -17,9 +17,12 @@ class AllianceChestsCrawlerParser {
 
         await page.setViewport({ width: 720, height: 480 });
         await page.waitForSelector(".ng-scope:nth-child(7) img.reward-info-image");
-        await page.screenshot({ path: "assets/img/ditlep-alliances-chests.png", clip: { x: 9, y: 468, width: 682, height: 645 } });
+        /* await page.screenshot({
+              path: "assets/img/ditlep-alliances-chests.png",
+              clip: { x: 9, y: 468, width: 682, height: 645 } 
+         });*/
 
-        const pageContent = await page.evaluate(() => {
+        const pageDataContent = await page.evaluate(() => {
 
             class IconParser {
                 constructor($icon) {
@@ -258,10 +261,10 @@ class AllianceChestsCrawlerParser {
 
             return chestsData;
         });
-        console.log(pageContent);
 
         await browser.close();
-        return pageContent;
+        
+        return pageDataContent;
     }
 }
 
