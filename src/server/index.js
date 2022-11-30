@@ -1,9 +1,12 @@
 import express from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import routers from "./routers/index.js"
 
 class App {
-    port = 8000;
+    port = process.env.port;
 
     constructor() {
         this.server = express();
